@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #030610;
+}
+
+#root {
+  font-family: 'Titillium Web', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #030610;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 10rem;
+  background: rgb(1, 4, 11);
+  border-bottom: 1px solid rgba(100, 108, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 2.2em;
+  font-weight: 200;
+  font-family: 'Titillium Web';
+  color: #ffffff;
+  flex-grow: 1;
+}
+
+.app-header h1 b {
+  font-weight: 700;
+}
+
+#logo-img {
+  width: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(-0.12em);
+  margin-right: 15px;
+}
+
+.logout-button {
+  padding: 0.7em 1.8em;
+  font-size: 0.95em;
+  font-weight: 600;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.account-email {
+  color: #aaa;
+  font-size: 0.95em;
+  font-weight: 400;
+}
+
+.app-content {
+  display: flex;
+  flex: 1;
+  padding: 2rem 3rem;
+  margin-left: 0;
+  gap: 2.5rem;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.content-sidebar {
+  width: 380px;
+  flex-shrink: 0;
+}
+
+.content-main {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.upload-container {
+  padding: 2.5rem;
+  background: rgb(1, 4, 11);
+  border-radius: 16px;
+  border: 1px solid rgba(100, 108, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 2rem;
+}
+
+.upload-container h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.4em;
+  color: #fff;
+}
+
+.upload-container input[type="file"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  margin: 1rem 0;
+  background: rgba(36, 36, 52, 0.8);
+  border: 2px #646cff;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+.upload-container input[type="file"]:hover {
+  border-color: #0ea5e9;
+  background: rgba(36, 36, 52, 0.95);
+}
+
+.upload-container button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.05em;
+  font-weight: 600;
+  background: #646cff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
+}
+
+.upload-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(100, 108, 255, 0.5);
+}
+
+.upload-container button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.photos-list-container h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.6em;
+  color: #fff;
+}
+
+.photos-list-container p {
+  color: #aaa;
+  text-align: center;
+  padding-top: 1rem;
+  font-style: italic;
+}
+
+.photos-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.photo-item {
+  background-color: #1d1e2c;
+  border: 1px solid #444;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-item img, .photo-item div[style*="height: 200px"] {
+  height: 200px;
+  object-fit: cover;
+  background-color: #242424;
+}
+
+.photo-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-info strong {
+  display: none;
+}
+
+.photo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.action-button {
+  flex: 1;
+  min-width: 80px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid #646cff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.action-button:hover:not(:disabled) {
+  background-color: #646cff;
+  color: #fff;
+}
+
+.action-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.download-button {
+  background-color: #646cff;
+  color: #fff;
+  border-color: #646cff;
+}
+.download-button:hover:not(:disabled) {
+  background-color: #535bf2;
+}
+
+.delete-button {
+  background-color: transparent;
+  color: #ff6b6b;
+  border-color: #ff6b6b;
+}
+.delete-button:hover:not(:disabled) {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+
+.share-container {
+  margin-top: auto;
+  padding: 1rem;
+  border-top: 1px solid #444;
+  background-color: #1d1e2c;
+}
+
+.share-container small {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+
+.share-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.share-controls input {
+  flex-grow: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  font-size: 0.9em;
+  background-color: #242424;
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.share-controls input:focus{
+  outline: none;
+}
+
+.share-controls button {
+  padding: 8px 12px;
+  font-size: 0.9em;
+  flex-shrink: 0;
+}
+
+.share-message {
+  margin: 0.5rem 0 0;
+  font-size: 0.9em;
+}
+.share-message.success {
+  color: #6bff6b;
+}
+.share-message.error {
+  color: #ff6b6b;
+}
+
+.share-message small {
+  display: block;
+  line-height: 1;
+}
+
+.app-footer {
+  margin-top: auto;
+  background-color: rgb(1, 4, 11);
+  padding: 1rem 1rem;
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9em;
+  border-top: 1px solid rgba(100, 108, 255, 0.2);
+}
+
+.app-footer b {
+  color: #fff;
+}
+
+.app-footer .footer-icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  margin: 0 0.25em;
+}
+
+@media (max-width: 900px) {
+  .app-header {
+    padding: 1.5rem 2rem;
+  }
+
+  .app-content {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .content-sidebar {
+    width: 100%;
+    position: static;
+    top: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header {
+    padding: 1rem 1rem;
+  }
+  
+  .app-header h1 {
+     font-size: 1.8em;
+  }
+  
+  .app-content {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .upload-container {
+    padding: 1.5rem;
+  }
+  
+  .account-email {
+    display: none;
+  }
+  
+  .logout-button {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
+  }
+
+  .header-right {
+    gap: 0.75rem;
+  }
+}
