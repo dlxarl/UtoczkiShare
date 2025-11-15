@@ -29,7 +29,7 @@ class PhotoShareSerializer(serializers.ModelSerializer):
     class Meta:
         model = PhotoShare
         fields = ['id', 'photo', 'created_at', 'shared_to']
-        read_only_fields = ['id', 'created_at'] # 'photo' must be provided
+        read_only_fields = ['id', 'created_at']
 
     def validate_shared_to(self, value):
         """

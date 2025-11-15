@@ -12,46 +12,33 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password', 'password_confirm']
 
     def validate_username(self, value):
-        """
-        Валідація унікальності username.
-        """
         if User.objects.filter(username=value).exists():
-            raise serializers.ValidationError("Користувач з таким ім'ям вже існує.")
+            raise serializers.ValidationError("A user with this username already exists.")
         if len(value) < 3:
-            raise serializers.ValidationError("Ім'я користувача повинно бути не менше 3 символів.")
+            raise serializers.ValidationError("Username must be at least 3 characters long.")
         return value
 
     def validate_email(self, value):
-        """
-        Валідація email: унікальність та формат.
-        """
         if User.objects.filter(email=value).exists():
-            raise serializers.ValidationError("Користувач з цією поштою вже існує.")
+            raise serializers.ValidationError("A user with this email already exists.")
         if not ('@' in value and '.' in value):
-            raise serializers.ValidationError("Невірний формат email.")
+            raise serializers.ValidationError("Invalid email format.")
         return value
 
     def validate_password(self, value):
-        """
-        Валідація паролю: мінімальна довжина, складність.
-        """
         try:
             validate_password(value)
         except ValidationError as e:
             raise serializers.ValidationError(str(e))
         
-        # Додаткові перевірки
         if value.lower() == self.initial_data.get('username', '').lower():
-            raise serializers.ValidationError("Пароль не може дорівнювати ім'ю користувача.")
+            raise serializers.ValidationError("Password cannot be the same as the username.")
         
         return value
 
     def validate(self, attrs):
-        """
-        Перевірка що паролі збігаються.
-        """
         if attrs['password'] != attrs.pop('password_confirm'):
-            raise serializers.ValidationError({"password": "Паролі не збігаються."})
+            raise serializers.ValidationError({"password": "Passwords do not match."})
         return attrs
 
     def create(self, validated_data):
