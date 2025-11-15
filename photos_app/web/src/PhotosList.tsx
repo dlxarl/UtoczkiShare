@@ -175,6 +175,7 @@ function SharedPhotosSection({ photos, PhotoItem }: { photos: Photo[], PhotoItem
   }
   return (
     <>
+    
       <h2 style={{ marginTop: '2rem' }}>Shared with Me</h2>
       <ul className="photos-list">
         {photos.map((p: Photo) => PhotoItem(p))}
